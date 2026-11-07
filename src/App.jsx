@@ -9,6 +9,7 @@ import FeaturedProjects from './components/FeaturedProjects'
 import Products from './components/Products'
 import Skills from './components/Skills'
 import Journey from './components/Journey'
+import Testimonials from './components/Testimonials'
 import Principles from './components/Principles'
 import CurrentFocus from './components/CurrentFocus'
 import Contact from './components/Contact'
@@ -151,6 +152,7 @@ export default function App() {
         <Products />
         <Skills />
         <Journey />
+        <Testimonials />
         <Principles />
         <CurrentFocus />
         <Contact />

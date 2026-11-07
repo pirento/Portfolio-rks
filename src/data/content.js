@@ -105,3 +105,7 @@ export const focus = [
 ]
 
 export const interests = ['Entrepreneurship', 'Legal-tech & compliance', 'Fintech', 'Sustainability', 'AI in business', 'Public service']
+
+// Real quotes only, with the person's permission. The section stays hidden while this list is empty.
+// Example: { quote: '…', name: 'Full name', role: 'Title, Company' }
+export const testimonials = []

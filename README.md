@@ -4,7 +4,7 @@ Personal portfolio built with React, Vite, Tailwind CSS v4, GSAP (ScrollTrigger)
 
 ## Run it (VS Code)
 
-1. Unzip, then in VS Code use **File → Open Folder** and pick the inner `ravikant-portfolio` folder (the one with `package.json`).
+1. Clone the repo, then in VS Code use **File → Open Folder** and pick the repo folder (the one with `package.json`).
 2. Open the terminal (**Terminal → New Terminal**) and run:
 
 ```bash
@@ -23,12 +23,13 @@ npm run dev       # opens on http://localhost:5173
 | Stats, expertise, journey, priorities, monthly review, vision cards | `src/data/content.js` |
 | Colours (light + dark) | `src/index.css` (top of the file) |
 | SEO / Open Graph tags | `index.html` |
+| Portrait photo | `public/ravikant-soni.jpg` |
 
 ### Before you publish
 
 1. **Phone number** is shown in the Contact section. Remove `phone` from `src/data/site.js` and the phone line in `src/components/Contact.jsx` if you don't want it public.
 2. **Open Graph URL**: in `index.html`, replace `/og-image.png` with the full URL once you have a domain.
-3. **Your photo**: the About section shows an "RS" placeholder. Put a photo in `public/portrait.jpg` and replace the `<svg>` inside the `<figure>` in `src/components/About.jsx` with `<img src="/portrait.jpg" alt="Ravikant Soni" class="absolute inset-0 size-full object-cover" />`.
+3. **Your photo** is `public/ravikant-soni.jpg` (1000×1250, 4:5). To change it, replace that file with a new 4:5 photo of the same name.
 
 ## Notes
 

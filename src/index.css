@@ -1,0 +1,208 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-mode='dark'], [data-mode='dark'] *));
+
+/* Theme tokens. Deep forest ink with a marigold-gold accent.
+   "inverse" is the dark panel used for Expertise, How I work, Contact and Footer.
+   The theme lives on data-mode (not data-theme) so a host page setting data-theme can't override the toggle. */
+:root {
+  --paper: #f1f3f0;
+  --stone: #e2e8e3;
+  --ink: #0f2620;
+  --muted: #56665f;
+  --rule: #cbd6cf;
+  --accent: #f2b33d;
+  --on-accent: #0f2620;
+  --inverse: #0f2620;
+  --on-inverse: #eef2ee;
+  --inverse-muted: #93a79e;
+  --inverse-rule: #24443a;
+  color-scheme: light;
+}
+
+[data-mode='dark'] {
+  --paper: #0b1a16;
+  --stone: #12261f;
+  --ink: #e9efea;
+  --muted: #98aaa2;
+  --rule: #21382f;
+  --inverse: #132b24; /* stays dark in dark mode: a lifted forest panel, not a light band */
+  --on-inverse: #e9efea;
+  --inverse-muted: #98aaa2;
+  --inverse-rule: #2a4a40;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-stone: var(--stone);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-inverse: var(--inverse);
+  --color-on-inverse: var(--on-inverse);
+  --color-inverse-muted: var(--inverse-muted);
+  --color-inverse-rule: var(--inverse-rule);
+
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-inverse :focus-visible {
+    outline-color: var(--on-inverse);
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Lime highlighter for selected words. Sweeps in when .is-on is added. */
+.marker {
+  color: var(--on-accent);
+  padding: 0 0.08em;
+  margin: 0 -0.04em;
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 55% / 100% 88%;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-radius: 0.08em;
+}
+.js-motion .marker {
+  background-size: 0% 88%;
+  color: inherit;
+  transition:
+    background-size 0.9s cubic-bezier(0.7, 0, 0.2, 1),
+    color 0.4s ease 0.25s;
+}
+.js-motion .marker.is-on {
+  background-size: 100% 88%;
+  color: var(--on-accent);
+}
+
+/* Subtle engineering grid behind the hero */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%);
+}
+
+/* Availability pulse */
+@keyframes ping-soft {
+  0% { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.4); opacity: 0; }
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--accent);
+  animation: ping-soft 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Scroll indicator line */
+@keyframes scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; }
+  45% { transform: scaleY(1); transform-origin: top; }
+  55% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+.scroll-line {
+  animation: scroll-line 2.2s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+
+/* Project visual hover motion */
+.visual-host .v-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.6, 0, 0.2, 1);
+}
+.visual-host:hover .v-draw {
+  animation: v-redraw 1.6s cubic-bezier(0.6, 0, 0.2, 1);
+}
+@keyframes v-redraw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.visual-host .v-spin {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: v-spin 9s linear infinite;
+  animation-play-state: paused;
+}
+.visual-host:hover .v-spin {
+  animation-play-state: running;
+}
+@keyframes v-spin {
+  to { transform: rotate(360deg); }
+}
+.visual-host .v-lift {
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.visual-host:hover .v-lift {
+  transform: translateY(-10px);
+}
+
+/* Theme switch via View Transitions: we drive the clip-path from JS. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Hide native scrollbar on horizontal rails */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

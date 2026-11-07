@@ -110,7 +110,7 @@ export default function Flywheel() {
               role="button"
               aria-label={s.line}
               onPointerEnter={() => pin(i)}
-              onPointerLeave={unpin}
+              onPointerLeave={(e) => e.pointerType === 'mouse' && unpin()}
               onFocus={() => pin(i)}
               onBlur={unpin}
               className="cursor-pointer outline-none"

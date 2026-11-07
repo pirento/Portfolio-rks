@@ -29,7 +29,7 @@ export default function Footer() {
                   <a
                     href={s.href}
                     {...ext(s.href)}
-                    aria-label={`${s.label} (opens in a new tab)`}
+                    aria-label={s.href.startsWith('http') ? `${s.label} (opens in a new tab)` : s.label}
                     className="grid size-11 place-items-center rounded-full border border-inverse-rule transition-colors hover:border-accent hover:bg-accent hover:text-on-accent"
                   >
                     <BrandIcon name={s.id} />

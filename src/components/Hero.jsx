@@ -108,7 +108,7 @@ export default function Hero({ ready }) {
           <div className="min-w-0 lg:col-span-5 [perspective:1200px]">
             <div ref={visual} className="will-change-transform">
               <Flywheel />
-              <p className="mt-3 text-center text-xs text-muted">Hover a step to read how it connects</p>
+              <p className="mt-3 text-center text-xs text-muted">Hover or tap a step to read how it connects</p>
             </div>
           </div>
         </div>

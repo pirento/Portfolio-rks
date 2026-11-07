@@ -75,7 +75,7 @@ export default function FeaturedProjects() {
             <Heading lines={['Built on the ground.', 'Here is what I run.']} className="mt-8 text-[clamp(2.25rem,5vw,4.75rem)] leading-[1.02]" />
           </div>
           <p data-reveal className="max-w-sm text-muted lg:col-span-4 lg:justify-self-end">
-            A startup, two jewellery businesses and a government project, all run from Basti at the same time.
+            A startup, two jewellery businesses, a government tender firm and a government project, all run from Basti at the same time.
           </p>
         </div>
 

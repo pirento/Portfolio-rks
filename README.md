@@ -24,14 +24,18 @@ npm run dev       # opens on http://localhost:5173
 | Colours (light + dark) | `src/index.css` (top of the file) |
 | SEO / Open Graph tags | `index.html` |
 | Portrait photo | `public/ravikant-soni.jpg` |
+| Testimonials (hidden until the list has quotes) | `testimonials` in `src/data/content.js` |
+| CV download | `public/ravikant-soni-cv.pdf` (replace with your own PDF of the same name) |
+| DPIIT certificate | `public/dpiit-certificate.pdf` and `.jpg` |
 
 ### Before you publish
 
 1. **Phone number** is shown in the Contact section. Remove `phone` from `src/data/site.js` and the phone line in `src/components/Contact.jsx` if you don't want it public.
-2. **Open Graph URL**: in `index.html`, replace `/og-image.png` with the full URL once you have a domain.
+2. **Open Graph URL**: on Vercel the share image becomes an absolute URL automatically. On another host, build with `SITE_URL=https://your-domain.com npm run build`.
 3. **Your photo** is `public/ravikant-soni.jpg` (1000×1250, 4:5). To change it, replace that file with a new 4:5 photo of the same name.
 
 ## Notes
 
+- The contact form has no backend: it opens the visitor's email app with the message filled in.
 - Motion respects `prefers-reduced-motion`; the custom cursor and magnetic buttons only run on mouse/trackpad devices.
 - Fonts (Inter, Space Grotesk) are self-hosted, so there are no third-party font requests.

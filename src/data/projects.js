@@ -57,6 +57,22 @@ export const experience = [
     link: null,
   },
   {
+    id: 'traders',
+    name: 'Pirento Traders',
+    role: 'Founder & Partner',
+    period: '2023 – Present',
+    visual: 'tender',
+    description:
+      'A partnership firm I co-founded in 2023 for government tender work: finding the right tenders, preparing complete bids and tracking every deadline, on clear and compliant processes.',
+    highlights: [
+      'Bid on government tenders through the GeM portal, state e-tender portals and direct department tenders.',
+      'Cover supply contracts, civil and construction works, and service and manpower contracts.',
+      'Handle tender search, eligibility checks, bid documentation, compliance and deadlines end to end.',
+    ],
+    tags: ['Government tenders', 'GeM portal', 'e-Tendering', 'Bid documentation', 'Compliance', 'Contract management'],
+    link: null,
+  },
+  {
     id: 'pwd',
     name: 'PWD Road Construction Project',
     role: 'Site Coordinator',
@@ -156,11 +172,6 @@ export const products = [
 
 // Other ventures and roles.
 export const ventures = [
-  {
-    name: 'Pirento Traders',
-    kind: 'Government tender work',
-    text: 'Tender opportunities, documentation, deadlines and compliance checks, run on clear and compliant processes.',
-  },
   {
     name: 'JBC Seva Trust',
     kind: 'Second Trustee',

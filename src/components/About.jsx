@@ -104,6 +104,31 @@ export default function About() {
               </figcaption>
             </figure>
 
+            <a
+              data-reveal
+              href="/dpiit-certificate.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="View"
+              className="group mt-6 flex items-center gap-4 rounded-[18px] border border-rule p-3 transition-colors hover:border-ink"
+            >
+              <img
+                src="/dpiit-certificate.jpg"
+                alt="DPIIT Startup India Certificate of Recognition for Venturecore Solutions"
+                width="1287"
+                height="910"
+                loading="lazy"
+                className="w-28 shrink-0 rounded-[10px] border border-rule"
+              />
+              <span className="min-w-0">
+                <span className="block font-medium leading-snug">Startup India recognition</span>
+                <span className="mt-1 block text-sm leading-snug text-muted">DPIIT certificate DIPP190348 · January 2025</span>
+                <span className="mt-2 inline-flex items-center gap-1 text-sm underline decoration-rule underline-offset-4 group-hover:decoration-ink">
+                  View certificate (PDF, opens in a new tab)
+                </span>
+              </span>
+            </a>
+
             <div data-reveal className="mt-10">
               <h3 className="text-sm text-muted">How I work</h3>
               <p className="mt-3 font-display text-[1.6rem] font-medium leading-[1.25] tracking-[-0.02em]">

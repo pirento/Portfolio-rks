@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowUpRight, Check, Copy, Mail } from 'lucide-react'
+import { ArrowUpRight, Check, Copy, FileDown, Mail, Send } from 'lucide-react'
 import { link, site } from '../data/site'
 import { Button, Container, Heading, SectionLabel } from './ui'
 
@@ -15,6 +15,18 @@ export default function Contact() {
       window.location.href = link.email
     }
   }
+
+  // No backend: the form opens the visitor's email app with the message filled in.
+  const send = (e) => {
+    e.preventDefault()
+    const f = new FormData(e.currentTarget)
+    const subject = `Portfolio enquiry from ${f.get('name')}`
+    const body = `${f.get('message')}\n\n${f.get('name')}${f.get('reply') ? ` (${f.get('reply')})` : ''}`
+    window.location.href = `${link.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  }
+
+  const field =
+    'w-full rounded-[14px] border border-inverse-rule bg-transparent px-4 py-3 text-on-inverse placeholder:text-inverse-muted focus:border-on-inverse'
 
   return (
     <section id="contact" data-nav="contact" className="on-inverse relative bg-inverse pt-28 text-on-inverse md:pt-40">
@@ -44,6 +56,9 @@ export default function Contact() {
               <Button href={link.website} external variant="inverse" icon={ArrowUpRight}>
                 Visit Pirento
               </Button>
+              <Button href="/ravikant-soni-cv.pdf" download variant="inverse" icon={FileDown}>
+                Download CV
+              </Button>
             </div>
 
             <div data-reveal className="mt-10 flex flex-wrap items-center gap-3">
@@ -65,6 +80,32 @@ export default function Contact() {
                 {site.phone}
               </a>
             </p>
+
+            <form data-reveal onSubmit={send} className="mt-12 grid gap-4 border-t border-inverse-rule pt-10 sm:grid-cols-2">
+              <h3 className="font-display text-xl font-medium tracking-tight sm:col-span-2">Or write to me here</h3>
+              <label className="grid gap-2 text-sm text-inverse-muted">
+                Your name
+                <input name="name" required autoComplete="name" className={field} />
+              </label>
+              <label className="grid gap-2 text-sm text-inverse-muted">
+                Phone or email for my reply (optional)
+                <input name="reply" autoComplete="email" className={field} />
+              </label>
+              <label className="grid gap-2 text-sm text-inverse-muted sm:col-span-2">
+                Message
+                <textarea name="message" required rows={4} className={`${field} resize-y`} />
+              </label>
+              <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[0.95rem] font-medium text-on-accent transition-opacity hover:opacity-90"
+                >
+                  Send message
+                  <Send aria-hidden="true" className="size-4" />
+                </button>
+                <p className="text-xs text-inverse-muted">Opens your email app with the message ready to send.</p>
+              </div>
+            </form>
           </div>
         </div>
       </Container>

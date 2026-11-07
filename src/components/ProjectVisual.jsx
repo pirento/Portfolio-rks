@@ -219,6 +219,45 @@ const variants = {
     </>
   ),
 
+  // Pirento Traders — a tender file with its checklist, and the portals it goes to.
+  tender: () => (
+    <>
+      <Grid />
+      <g className="v-lift">
+        <rect x="250" y="70" width="300" height="370" rx="18" fill={paper} stroke={ink} strokeWidth="2" />
+        {label(280, 115, 'Tender file', { fontSize: 20, fontWeight: 600 })}
+        <line x1="280" y1="135" x2="520" y2="135" stroke={rule} strokeWidth="2" />
+        {['Eligibility', 'Documents', 'Compliance', 'Bid submitted'].map((t, i) => {
+          const y = 180 + i * 62
+          const last = i === 3
+          return (
+            <g key={t}>
+              <rect x="280" y={y - 18} width="36" height="36" rx="10" fill={last ? accent : paper} stroke={last ? onAccent : ink} strokeWidth="2" />
+              <path d={`M289 ${y} l7 7 13 -14`} fill="none" stroke={last ? onAccent : ink} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              {label(332, y + 6, t, { fontSize: 17 })}
+            </g>
+          )
+        })}
+      </g>
+      <path className="v-draw" pathLength="1" d="M550 255 C610 255 610 150 660 150" fill="none" stroke={ink} strokeWidth="2.5" strokeDasharray="0.03 0.02" />
+      {[
+        [80, 150, 'GeM'],
+        [80, 360, 'e-Tender'],
+        [600, 360, 'Departments'],
+      ].map(([x, y, t]) => (
+        <g key={t}>
+          <rect x={x} y={y - 22} width="140" height="44" rx="22" fill={paper} stroke={ink} />
+          {label(x + 70, y + 6, t, { textAnchor: 'middle', fontSize: 15 })}
+        </g>
+      ))}
+      <g transform="translate(600 105)">
+        <rect width="150" height="64" rx="14" fill={accent} stroke={onAccent} />
+        {label(18, 28, 'Deadline', { fontSize: 12, fill: onAccent, opacity: 0.75 })}
+        {label(18, 50, 'Tracked', { fontSize: 18, fontWeight: 600, fill: onAccent })}
+      </g>
+    </>
+  ),
+
   // PWD road project — a road receding to the horizon with milestone posts.
   road: () => (
     <>
